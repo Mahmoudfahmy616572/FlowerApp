@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1085183132592",
+    "project_id": "flowerappedit",
+    "storage_bucket": "flowerappedit.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1085183132592:android:3fb46de16c60c173150c75",
+        "android_client_info": {
+          "package_name": "com.example.testt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1085183132592-chd7sb43t85mom7eaj8rpu42pea1ddqp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDK7BEbuClpyIkGHgtX64XlzOqgNOOSUZk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1085183132592-chd7sb43t85mom7eaj8rpu42pea1ddqp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
