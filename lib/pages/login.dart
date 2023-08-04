@@ -1,6 +1,6 @@
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flower_app/pages/forgetPassword.dart';
+import 'package:flower_app/pages/home.dart';
 import 'package:flower_app/pages/register.dart';
 import 'package:flower_app/provider/googleSignIn.dart';
 import 'package:flower_app/shared/Snakbar.dart';
@@ -26,6 +26,10 @@ class _LoginState extends State<Login> {
       isLoading = true;
     });
     try {
+      final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailcontroller.text,
+        password: passwordcontroller.text,
+      );
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         showSnackBar(context, "No user found for that email.");
@@ -40,7 +44,6 @@ class _LoginState extends State<Login> {
 
   @override
   void dispose() {
-   
     emailcontroller.dispose();
     passwordcontroller.dispose();
     super.dispose();
@@ -56,8 +59,6 @@ class _LoginState extends State<Login> {
               image: AssetImage('assets/img/login.png'), fit: BoxFit.cover),
         ),
         child: Scaffold(
-     
-
             backgroundColor: Colors.transparent,
             body: Stack(
               children: [
@@ -89,10 +90,11 @@ class _LoginState extends State<Login> {
                             keyboardType: TextInputType.emailAddress,
                             decoration: InputDecoration(
                               filled: true,
-                              fillColor: const Color.fromARGB(255, 212, 212, 212),
+                              fillColor:
+                                  const Color.fromARGB(255, 212, 212, 212),
                               focusedBorder: OutlineInputBorder(
-                                  borderSide:
-                                      const BorderSide(color: Colors.grey, width: 1),
+                                  borderSide: const BorderSide(
+                                      color: Colors.grey, width: 1),
                                   borderRadius: BorderRadius.circular(9)),
                               labelText: "Email",
                               labelStyle: const TextStyle(
@@ -100,8 +102,8 @@ class _LoginState extends State<Login> {
                                   fontWeight: FontWeight.bold),
                               prefixIcon: const Icon(Icons.email),
                               enabledBorder: OutlineInputBorder(
-                                  borderSide:
-                                      const BorderSide(color: Colors.white, width: 1),
+                                  borderSide: const BorderSide(
+                                      color: Colors.white, width: 1),
                                   borderRadius: BorderRadius.circular(9)),
                             ),
                           ),
@@ -114,10 +116,11 @@ class _LoginState extends State<Login> {
                             obscureText: isVisibility ? true : false,
                             decoration: InputDecoration(
                               filled: true,
-                              fillColor: const Color.fromARGB(255, 212, 212, 212),
+                              fillColor:
+                                  const Color.fromARGB(255, 212, 212, 212),
                               focusedBorder: OutlineInputBorder(
-                                  borderSide:
-                                      const BorderSide(color: Colors.grey, width: 1),
+                                  borderSide: const BorderSide(
+                                      color: Colors.grey, width: 1),
                                   borderRadius: BorderRadius.circular(9)),
                               labelText: "Password",
                               labelStyle: const TextStyle(
@@ -136,8 +139,8 @@ class _LoginState extends State<Login> {
                                           ? const Icon(Icons.visibility)
                                           : const Icon(Icons.visibility_off))),
                               enabledBorder: OutlineInputBorder(
-                                  borderSide:
-                                      const BorderSide(color: Colors.grey, width: 1),
+                                  borderSide: const BorderSide(
+                                      color: Colors.grey, width: 1),
                                   borderRadius: BorderRadius.circular(9)),
                             ),
                           ),
@@ -162,6 +165,9 @@ class _LoginState extends State<Login> {
                                     onPressed: () async {
                                       await loginCode();
                                       if (!mounted) return;
+                                      MaterialPageRoute(
+                                        builder: (context) => const Home(),
+                                      );
                                     },
                                     icon: isLoading
                                         ? const CircularProgressIndicator(
