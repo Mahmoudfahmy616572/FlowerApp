@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flower_app/pages/forgetPassword.dart';
 import 'package:flower_app/pages/home.dart';
@@ -26,6 +28,7 @@ class _LoginState extends State<Login> {
       isLoading = true;
     });
     try {
+      // ignore: unused_local_variable
       final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: emailcontroller.text,
         password: passwordcontroller.text,
